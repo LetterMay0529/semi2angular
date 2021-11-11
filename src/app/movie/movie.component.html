@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Movie List</h5>
+        <div class="card-body">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <button type="button" class="btn btn-info"(click)="viewMode = 'upcoming'">Upcoming Movies</button>
+     </li>
+     <li class="nav-item" style="margin-right: 50px;">
+      <button type="button" class="btn btn-secondary"(click)="viewMode = 'showing'">On Theater</button>
+   </li>
+   </ul>
+
+   <div [ngSwitch]="viewMode">
+     <div *ngSwitchCase="'upcoming'">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col" style="margin-right: 20px;">Movie Title</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let coming of upcoming">
+              <tr>
+                <th scope="row">{{coming.id}}</th>
+                <td>{{coming.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div *ngSwitchCase="'showing'">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col" style="margin-right: 20px;">Movie Title</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let show of showing">
+              <tr>
+                <th scope="row">{{show.id}}</th>
+                <td>{{show.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <hr>
+    <div *ngSwitchDefault>Click button to see more....</div>
+   </div>
+</div>
+</div>  
+  </div>
